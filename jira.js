@@ -1,23 +1,12 @@
-// const fetch = import("node-fetch");
-// import fetch from "node-fetch";
-// global.Buffer = global.Buffer || require('buffer').Buffer
-// import { Buffer } from 'buffer';
-// const { kMaxLength } = require('buffer')
-
 const downloadsRepositories = require('./downloadsRepositories.js')
 
-const requstUrl = 'https://stxffyy.atlassian.net'
+console.log(process.env.TOKEN);
 
-
-// const requstUrl = 'https://stxffyy.atlassian.net/rest/api/3/issue'
-// Response: 400 Bad Request
+const requstUrl = 'https://stxffyy.atlassian.net/rest/api/2/issue'
 
 function sendRequest(method, url, body = null) {
 
 const headers = {
-  'Authorization': `Basic ${Buffer.from(
-    'izsett210516@gmail.com:72dybao9zA2RYyx3R93g48D7'
-  ).toString('base64')}`,
   'Accept': 'application/json',
   'Content-Type': 'application/json'
 }
@@ -25,7 +14,7 @@ const headers = {
 return fetch(url, {
   method: method,
   headers: headers,
-  body: bodyData
+  body: JSON.stringify(bodyData)
 })
   .then(response => {
     console.log(
